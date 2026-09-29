@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Institutional Negotiation Memory & Learning Agent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+
+  <!-- Top Navigation & Executive Status Bar -->
+  <header class="app-header">
+    <div class="brand-section">
+      <div class="brand-icon">🧠</div>
+      <div class="brand-title">
+        <h1>Institutional Negotiation Memory</h1>
+        <div class="brand-subtitle">
+          <span>Powered by Vectorize Hindsight</span>
+          <span class="bank-badge" id="bank-id-badge">bank: negotiation-memory</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="header-status-group">
+      <div class="status-badge" id="hindsight-status-badge">
+        <div class="status-indicator"></div>
+        <span id="hindsight-status-text">Checking Hindsight...</span>
+      </div>
+
+      <div class="status-badge">
+        <span>Experiences:</span>
+        <strong id="memory-count-badge" style="color: var(--accent-cyan); margin-left: 4px;">0</strong>
+      </div>
+
+      <div class="header-actions">
+        <button class="btn btn-secondary btn-sm" id="btn-seed" title="Seed Canonical Test Memories">
+          <span>🌱 Seed Demo Bank</span>
+        </button>
+        <button class="btn btn-demo btn-sm" id="btn-canonical-demo" title="Run Canonical Alpha Supplier Proof">
+          <span>⚡ Alpha Supplier Proof</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 7-Step Demo Proof Ribbon -->
+  <div class="demo-banner">
+    <div class="demo-title-group">
+      <span class="demo-tag">Hindsight Demo Loop</span>
+      <strong style="font-size: 0.85rem;">Continuous Condition-Aware Learning Proof:</strong>
+    </div>
+
+    <div class="demo-steps-track">
+      <div class="step-chip completed" id="step-1">
+        <span>1. Past Precedents</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip active" id="step-2">
+        <span>2. Hindsight Recall</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip" id="step-3">
+        <span>3. Condition Difference</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip" id="step-4">
+        <span>4. Hindsight Reflect</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip" id="step-5">
+        <span>5. Strategy Guidance</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip" id="step-6">
+        <span>6. Human Decision</span>
+      </div>
+      <span class="step-arrow">➔</span>
+      <div class="step-chip" id="step-7">
+        <span>7. Retain Outcome</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main class="app-main">
+    
+    <!-- Institutional Memory Summary Bar -->
+    <div class="institutional-memory-summary-bar">
+      <div class="mem-stat-chip">
+        <span class="mem-stat-icon">📚</span>
+        <span class="mem-stat-label">Negotiation Experiences:</span>
+        <strong class="mem-stat-val" id="stat-mem-count">0</strong>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat-chip">
+        <span class="mem-stat-icon">🏢</span>
+        <span class="mem-stat-label">Suppliers Remembered:</span>
+        <strong class="mem-stat-val" id="stat-suppliers-count">0</strong>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat-chip">
+        <span class="mem-stat-icon">🏷️</span>
+        <span class="mem-stat-label">Categories Represented:</span>
+        <strong class="mem-stat-val" id="stat-categories-count">0</strong>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat-chip">
+        <span class="mem-stat-icon">✨</span>
+        <span class="mem-stat-label">Retained This Session:</span>
+        <strong class="mem-stat-val" id="stat-session-retained">0</strong>
+      </div>
+      <div class="mem-stat-divider"></div>
+      <div class="mem-stat-chip">
+        <span class="mem-stat-icon">🏦</span>
+        <span class="mem-stat-label">Bank:</span>
+        <strong class="mem-stat-val" style="color: var(--accent-purple);">negotiation-memory</strong>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" data-tab="tab-advisor">
+        <span>🎯 Strategy Advisor</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-retain">
+        <span>📥 Retain Outcome</span>
+      </button>
+      <button class="tab-btn" data-tab="tab-explorer">
+        <span>📚 Memory Bank Explorer</span>
+        <span class="tab-badge" id="tab-count-badge">0</span>
+      </button>
+    </nav>
+
+    <!-- Tab 1: Strategy Advisor (Condition-Aware Learning) -->
+    <section class="tab-content active" id="tab-advisor">
+      <div class="grid-2col">
+        
+        <!-- Left: Input Form for New Negotiation Context -->
+        <div class="card">
+          <div class="card-header">
+            <h3><span class="card-header-icon">📋</span> Current Negotiation Context</h3>
+            <button class="btn btn-secondary btn-sm" id="btn-fill-alpha" title="Fill canonical Alpha Supplier surplus case">
+              <span>Load Alpha Surplus Case</span>
+            </button>
+          </div>
+
+          <form id="form-advisor">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adv-supplier">Supplier Name</label>
+                <input type="text" id="adv-supplier" required placeholder="e.g. Alpha Supplier" value="Alpha Supplier">
+              </div>
+              <div class="form-group">
+                <label for="adv-category">Category</label>
+                <input type="text" id="adv-category" required placeholder="e.g. Raw Materials" value="Raw Materials">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="adv-market">Current Market Conditions</label>
+              <textarea id="adv-market" required placeholder="Describe supply/demand balance, alternatives...">Supply surplus, softening global industrial demand, 4 alternative qualified vendors available.</textarea>
+              <div class="form-hint">Contrast with past conditions (e.g. shortage vs surplus).</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="adv-supplier-leverage">Supplier Leverage</label>
+                <select id="adv-supplier-leverage">
+                  <option value="Low" selected>Low (Surplus market, competitors bidding)</option>
+                  <option value="Medium">Medium (Balanced supply, few substitutes)</option>
+                  <option value="High">High (Sole source, severe bottleneck)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="adv-buyer-leverage">Buyer Leverage</label>
+                <select id="adv-buyer-leverage">
+                  <option value="High" selected>High (Significant volume, alternatives)</option>
+                  <option value="Medium">Medium (Moderate demand)</option>
+                  <option value="Low">Low (Urgent need, captive buyer)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="adv-objective">Negotiation Objective</label>
+              <textarea id="adv-objective" required placeholder="e.g. Price reduction targets, contract flexibility...">Achieve 15% price reduction, eliminate volume take-or-pay lock-in, and switch to quarterly price reviews.</textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="adv-constraints">Operational Constraints</label>
+              <input type="text" id="adv-constraints" placeholder="e.g. Lead times under 14 days" value="Delivery lead time cannot exceed 14 business days.">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="btn-run-analysis" style="width: 100%;">
+              <span>🔍 Run Hindsight Memory Analysis</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Right: Results Cockpit -->
+        <div class="card" id="results-cockpit">
+          <div class="card-header">
+            <h3><span class="card-header-icon">💡</span> Hindsight Condition-Aware Reasoning</h3>
+            <span class="badge badge-neutral" id="results-status">Ready</span>
+          </div>
+
+          <div id="results-placeholder" class="empty-state">
+            <div class="empty-icon">🧠</div>
+            <h4>Ready for Strategy Analysis</h4>
+            <p>Click "Run Hindsight Memory Analysis" or "Alpha Supplier Proof" to recall historical experiences and evaluate condition divergence.</p>
+          </div>
+
+          <div id="results-content" style="display: none;">
+            
+            <!-- Visible Section: Memory-Grounded Strategy Analysis -->
+            <div class="hindsight-evidence-card" id="hindsight-evidence-card">
+              <div class="evidence-header">
+                <div class="evidence-title">
+                  <span class="evidence-icon">🧠</span>
+                  <div>
+                    <h4 id="evidence-card-title">Memory-Grounded Strategy Analysis</h4>
+                    <span class="evidence-subtitle" id="evidence-card-subtitle">Evidence source: Hindsight memory retrieval + condition-aware analysis | Bank: <span class="bank-pill">negotiation-memory</span></span>
+                  </div>
+                </div>
+                <span class="badge badge-neutral" id="evidence-reflect-status">Condition-Aware Analysis</span>
+              </div>
+
+              <!-- Strategic Reasoning Generated from Memory -->
+              <div class="evidence-section">
+                <label class="evidence-label">
+                  <span class="evidence-label-icon">💡</span>
+                  <strong>Strategic Reasoning Generated from Memory:</strong>
+                </label>
+                <div class="evidence-content reasoning-text" id="evidence-strategic-reasoning">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Why Current Conditions Differ from Historical Cases -->
+              <div class="evidence-section">
+                <label class="evidence-label">
+                  <span class="evidence-label-icon">⚖️</span>
+                  <strong>Why Current Conditions Differ from Historical Cases:</strong>
+                </label>
+                <div class="evidence-content divergence-text" id="evidence-condition-divergence">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- Memories / Evidence Used -->
+              <div class="evidence-section">
+                <label class="evidence-label">
+                  <span class="evidence-label-icon">📚</span>
+                  <strong>Memories & Evidence Used by Hindsight:</strong>
+                </label>
+                <div class="evidence-memories-grid" id="evidence-memories-list">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Warning Box: Condition Shift & Repeat Caution -->
+            <div class="warning-box" id="warning-box">
+              <div class="warning-header">
+                <span>⚠️ CONDITION SHIFT ALERT: DO NOT REPEAT PAST STRATEGY</span>
+              </div>
+              <div class="warning-text" id="warning-text">
+                Evaluating...
+              </div>
+            </div>
+
+            <!-- Condition Contrast Table -->
+            <div class="contrast-table-container">
+              <table class="contrast-table">
+                <thead>
+                  <tr>
+                    <th>Dimension</th>
+                    <th>Past Historical Deal (Hindsight)</th>
+                    <th>Current Context (Upcoming Round)</th>
+                  </tr>
+                </thead>
+                <tbody id="contrast-table-body">
+                  <!-- Populated via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 1. Why This Strategy Changed -->
+            <div class="why-strategy-changed-card" id="why-strategy-changed-card">
+              <div class="why-header">
+                <span class="why-icon">🔄</span>
+                <h4>Why This Strategy Changed</h4>
+              </div>
+              <div class="why-grid">
+                <div class="why-item">
+                  <span class="why-label">Market:</span>
+                  <span class="why-shift" id="why-market-shift">Evaluating...</span>
+                </div>
+                <div class="why-item">
+                  <span class="why-label">Supplier Leverage:</span>
+                  <span class="why-shift" id="why-supplier-leverage-shift">Evaluating...</span>
+                </div>
+                <div class="why-item">
+                  <span class="why-label">Buyer Leverage:</span>
+                  <span class="why-shift" id="why-buyer-leverage-shift">Evaluating...</span>
+                </div>
+                <div class="why-item">
+                  <span class="why-label">Alternative Suppliers:</span>
+                  <span class="why-shift" id="why-alternatives-shift">Evaluating...</span>
+                </div>
+                <div class="why-item why-item-full">
+                  <span class="why-label">Historical Tactic:</span>
+                  <span class="why-historical-tactic" id="why-historical-tactic">Evaluating...</span>
+                </div>
+              </div>
+              <div class="why-summary-note">
+                <span>💡 <strong>Current conditions differ from the historical precedent, so the recommended strategy changes.</strong></span>
+              </div>
+            </div>
+
+            <!-- Strategy Guidance Block -->
+            <div class="guidance-block">
+              <h4 id="strategy-title">🎯 Tactical Recommendation</h4>
+              <p id="strategy-rationale" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.75rem;"></p>
+              
+              <div class="form-row" style="margin-bottom: 0.75rem;">
+                <div>
+                  <label style="color: var(--accent-emerald);">Recommended Tactics</label>
+                  <div class="tactic-tag-list" id="recommended-tactics-list"></div>
+                </div>
+                <div>
+                  <label style="color: var(--accent-rose);">Tactics to Avoid</label>
+                  <div class="tactic-tag-list" id="avoid-tactics-list"></div>
+                </div>
+              </div>
+
+              <div class="mem-pill-box" style="margin-top: 0.5rem;">
+                <div style="font-size: 0.8rem; margin-bottom: 0.25rem;">
+                  <strong style="color: var(--accent-cyan);">Key Tradeoff Guidance:</strong>
+                  <span id="strategy-tradeoff"></span>
+                </div>
+                <div style="font-size: 0.8rem;">
+                  <strong style="color: var(--accent-indigo);">Concession Strategy:</strong>
+                  <span id="strategy-concession"></span>
+                </div>
+                <div id="strategy-risks-box" style="font-size: 0.8rem; margin-top: 0.5rem; display: none;">
+                  <strong style="color: #f59e0b;">Key Risks to Monitor:</strong>
+                  <ul id="strategy-risks-list" style="margin: 4px 0 0 16px; padding: 0; color: var(--text-secondary);"></ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Negotiation Intelligence Timeline -->
+            <div class="intelligence-timeline-card" id="intelligence-timeline-card">
+              <div class="timeline-header">
+                <div class="timeline-title-group">
+                  <span class="timeline-icon">⏳</span>
+                  <h4>Negotiation Intelligence Timeline</h4>
+                </div>
+                <span class="badge badge-neutral" id="timeline-supplier-badge">Selected Supplier</span>
+              </div>
+              <div class="timeline-track" id="timeline-track">
+                <!-- Dynamically rendered via JS using actual past & current negotiation data -->
+              </div>
+            </div>
+
+            <!-- Recalled Experiences from Hindsight -->
+            <div class="guidance-block">
+              <h4><span>📜</span> Recalled Past Experiences (Hindsight RECALL)</h4>
+              <div class="experience-list" id="recalled-list">
+                <!-- Populated via JS -->
+              </div>
+            </div>
+
+            <!-- Human Advisory & Retain CTA -->
+            <div class="advisory-footer">
+              <span>👤 <strong>Procurement Manager Advisory:</strong> The system provides memory and strategic reasoning. You retain full discretion over deal execution.</span>
+            </div>
+
+            <div style="margin-top: 1rem; display: flex; justify-content: flex-end;">
+              <button class="btn btn-secondary" id="btn-prefill-retain">
+                <span>📥 Concluded Deal? Retain Outcome Back to Hindsight ➔</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Tab 2: Retain Completed Negotiation (Continuous Learning Loop) -->
+    <section class="tab-content" id="tab-retain">
+      <div class="card" style="max-width: 900px; margin: 0 auto;">
+        <div class="card-header">
+          <h3><span class="card-header-icon">📥</span> Retain Completed Negotiation Experience</h3>
+          <span class="badge badge-success">Continuous Learning Loop</span>
+        </div>
+
+        <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+          Preserve the experience behind a completed supplier negotiation using Vectorize Hindsight. 
+          The structured outcome is retained permanently in memory bank <code>negotiation-memory</code> to enrich future negotiations.
+        </p>
+
+        <form id="form-retain">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ret-supplier">Supplier</label>
+              <input type="text" id="ret-supplier" required placeholder="e.g. Alpha Supplier">
+            </div>
+            <div class="form-group">
+              <label for="ret-category">Category</label>
+              <input type="text" id="ret-category" required placeholder="e.g. Raw Materials">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ret-market">Market Conditions During Deal</label>
+            <textarea id="ret-market" required placeholder="e.g. Supply surplus, high carrier competition, spot rates declining..."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ret-sup-leverage">Supplier Leverage</label>
+              <input type="text" id="ret-sup-leverage" required placeholder="e.g. Low (4 competing vendors available)">
+            </div>
+            <div class="form-group">
+              <label for="ret-buy-leverage">Buyer Leverage</label>
+              <input type="text" id="ret-buy-leverage" required placeholder="e.g. High (Aggregated 20,000 unit volume)">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ret-objective">Negotiation Objective</label>
+            <input type="text" id="ret-objective" required placeholder="e.g. 15% cost reduction without volume lock-in">
+          </div>
+
+          <div class="form-group">
+            <label for="ret-constraints">Operational Constraints</label>
+            <input type="text" id="ret-constraints" placeholder="e.g. Minimum SLA 98%, lead time under 14 days">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ret-tactics">Tactics Attempted (comma-separated)</label>
+              <textarea id="ret-tactics" required placeholder="Competitive benchmarking RFP, Index pricing proposal, Refusal of take-or-pay"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="ret-what-worked">What Worked (comma-separated)</label>
+              <textarea id="ret-what-worked" required placeholder="Inviting 2 secondary bidders into trial, Quarterly index-linked ratchet"></textarea>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="ret-what-failed">What Failed (comma-separated)</label>
+            <textarea id="ret-what-failed" placeholder="Demanding Net 120 payment terms (settled at Net 60)"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="ret-outcome">Final Outcome Achieved</label>
+            <textarea id="ret-outcome" required placeholder="Achieved 16% discount, zero volume exclusivity, quarterly index reviews, Net 60 payment terms."></textarea>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ret-tradeoffs">Tradeoffs & Concessions</label>
+              <input type="text" id="ret-tradeoffs" required placeholder="Offered first-look consideration on new product line in exchange for immediate price cut">
+            </div>
+            <div class="form-group">
+              <label for="ret-lessons">Lessons Learned (Institutional Wisdom)</label>
+              <input type="text" id="ret-lessons" required placeholder="In surplus conditions, leveraging competitive tension yielded 16% savings without surrendering volume flexibility.">
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 1rem; justify-content: flex-end; margin-top: 1rem;">
+            <button type="button" class="btn btn-secondary" id="btn-prefill-surplus-outcome">
+              <span>⚡ Load Alpha Surplus Concluded Outcome</span>
+            </button>
+            <button type="submit" class="btn btn-primary" id="btn-submit-retain">
+              <span>💾 Retain into Hindsight</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Tab 3: Memory Bank Explorer -->
+    <section class="tab-content" id="tab-explorer">
+      <div class="card">
+        <div class="card-header">
+          <h3><span class="card-header-icon">📚</span> Hindsight Memory Bank: negotiation-memory</h3>
+          <div style="display: flex; gap: 0.5rem; align-items: center;">
+            <input type="text" id="search-memory" placeholder="Search suppliers, categories, tactics..." style="width: 260px; padding: 0.4rem 0.75rem;">
+            <button class="btn btn-secondary btn-sm" id="btn-refresh-bank">
+              <span>🔄 Refresh</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="memory-grid" id="memory-grid">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <script src="/static/js/app.js"></script>
+</body>
+</html>

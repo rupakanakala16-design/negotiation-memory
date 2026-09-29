@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Virtual Environment
+.venv/
+
+# Environment Variables
+.env
+
+# Data & Cache
+data/hindsight_bank_store.json
+data/human_decisions.json
+data/retained_outcomes.json
+.pg0/
+hindsight-data/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

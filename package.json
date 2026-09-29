@@ -1,0 +1,25 @@
+{
+  "name": "negotiation-memory",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Institutional Negotiation Memory & Intelligence Console",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test tests/ts-tests/schema.test.mjs",
+    "test:py": "pytest -v"
+  },
+  "keywords": [
+    "negotiation",
+    "hindsight",
+    "procurement",
+    "memory",
+    "fastapi"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
+}

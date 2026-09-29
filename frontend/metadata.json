@@ -1,0 +1,6 @@
+{
+  "name": "Negotiation Memory",
+  "description": "Institutional Negotiation Intelligence command center for procurement teams.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
